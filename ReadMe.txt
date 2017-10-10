@@ -1,0 +1,1 @@
+琌硓筁 Anaconda download Tensorflow and numpy单单家舱┮Pullㄓ惠璶传interpreter眖IDE File=>Setting=>Project: XXX project name => Project Interpreter=>传程combo box ΘAnaconda3\envs\...柑python.exeぃ穦瞷import tensorflow 岿粇拜肈
