@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pylab as plt
 
 def addNewLayer(inputs, in_size, out_size, activation_function = None):
     #uppercase mean a matrix variables.
@@ -39,7 +40,28 @@ init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
 
+#View the data.
+fig = plt.figure()
+#order
+ax = fig.add_subplot(1,1,1)
+#The axis will be created by the x_data and y_data.
+ax.scatter(x_data, y_data)
+#Code can pass plt.show() and update the map.
+#If plt.ion() didn't existed then code flow will stop at plt.show()/
+plt.ion()
+plt.show()
+
 for i in range(1000):
     sess.run(train_step, feed_dict={xs:x_data, ys:y_data})
     if i % 50 == 0:
-        print(sess.run(loss, feed_dict={xs:x_data, ys:y_data}))
+        try:
+            # Clear the map then we update new map.
+            ax.lines.remove(lines[0])
+        except Exception:
+            # First time lines is None, and we do not clear the map.
+            pass
+        #print(sess.run(loss, feed_dict={xs:x_data, ys:y_data}))
+        prediction_value = sess.run(prediction, feed_dict={xs:x_data})
+        #Draw the 2-D map x axis and y axis, 'r-' mean red line and width is 5.
+        lines = ax.plot(x_data, prediction_value, 'r-', lw=5)
+        plt.pause(0.1)
