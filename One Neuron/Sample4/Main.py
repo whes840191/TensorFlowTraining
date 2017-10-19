@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+#We can add a additional matrix limitation like [2,2](need input a 2x2 matrix to this placeholder).
 input1 = tf.placeholder(tf.float32)
 input2 = tf.placeholder(tf.float32)
 
